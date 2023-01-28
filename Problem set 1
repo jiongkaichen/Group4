@@ -1,0 +1,7 @@
+"Question 1"
+"a)"
+L1 = [2, 5, 6, 4, 5 ,9, 3, 2, 2]
+print(L1[0:3]) #print from index_0 to index_4, excluding index_4
+print(L1[7:])  #
+
+"b)"
