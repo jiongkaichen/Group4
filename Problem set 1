@@ -5,3 +5,140 @@ print(L1[0:3]) #print from index_0 to index_4, excluding index_4
 print(L1[-2:]) #print from second last index to index zero, excluding index 0
 
 "b)"
+L1[2] = 4 #replacing index_2 with 4
+L1[6] = 7 #replacing index_6 with 7
+print(L1)
+
+"c)"
+L1.insert(L1.index(9),8) #insert number 8 into list
+L1.remove(9) #remove the number 9 from list
+print(L1)
+
+"d)"
+import numpy as np
+arr = np.array([2, 5, 6, 4, 5 ,9, 3, 2, 2])
+print(np.argmax(arr)) #shows index of the maximum value(9)
+arr.put(5, 8) #replace index 5 with number 8
+print(arr)
+
+"Question 2"
+
+"Question 3"
+numbers =[0,1,2,3,4,5,6,7,8,9] #this is the list of my first 10 numbers
+previous_number=0 #define the previous number
+for i in numbers: # for loop of numbers, print numbers each in a new line
+summ = previous_number + i #equation for the sum
+print("current number", i, "previous number", previous_number, "sum", summ) #print the current number, previous number and the sum of the two
+previous_number = i #modify the previous number, set it to the current number
+
+'question 4'
+"a)"
+L1 = [2, 5, 6, 4, 5 ,9, 3, 2, 2]
+L2 = [L1 for L1 in L1 if int(L1) < 5]
+print(L2)
+
+"b)"
+L3 = [L1 for L1 in L1 if int(L1) >= 3 and int(L1) < 7]
+print(L3)
+
+"c)"
+import numpy as np
+matrix = np.mat("2, 5, 6; 4, 5 ,9; 3, 2, 2")
+print(matrix)
+print(5 in matrix)
+
+"d)"
+import numpy as np
+matrix = np.mat("2, 5, 6; 4, 5 ,9; 3, 2, 2") 
+matrix[matrix < 4] = 0
+matrix_b = matrix
+print(matrix_b)
+
+"e)"
+print(np.count_nonzero(matrix_b == 0))
+
+"question 5"
+"a)"
+A = input("A= ", )
+K = input("K= ", )
+L = input("L= ", )
+alpha = input("alpha = ")
+sig = input("sigma = ")
+power1 = (float(sig)-1)/1
+power2 = float(sig)/(float(sig)-1)
+CES = float(A)*(float(alpha)*float(K)**float(power1) + (1-float(alpha))*float(L)**float(power1))**float(power2)
+CD = float(A)*(float(K)**float(alpha))*float(L)**(1-float(alpha))
+if float(alpha) == 1: 
+    print(CD)
+elif float(alpha) != 1:
+    print(CES)
+    
+    
+"b)"
+import matplotlib.pyplot as plt
+import numpy as np
+A = 1.5
+alpha = 0.33
+L = 3
+vector = np.vectorize(np.int_) #use vector to prevent typr error
+K = np.linspace(0,10,11)
+def f(K) : return float(A)*(vector(K)**float(alpha))*float(L)**(1-float(alpha))
+plt.xlabel("$K$")
+plt.ylabel("$Y$")
+plt.plot(K,f(K))
+
+
+"c)"
+def g(K) : return float(A)*(vector(K)**0.25)*float(L)**(1-0.25)
+def h(K) : return float(A)*(vector(K)**0.5)*float(L)**(1-0.5)
+def i(K) : return float(A)*(vector(K)**0.75)*float(L)**(1-0.75)
+plt.plot(K,g(K))
+plt.plot(K,h(K))
+plt.plot(K,i(K))
+
+
+"d)"
+import matplotlib.pyplot as plt
+import numpy as np
+A = 1.5
+alpha = 0.33
+L = 3
+sig = 0.33
+vector = np.vectorize(np.int_)
+K = np.linspace(0,10,11)
+power1 = (float(sig)-1)/1
+power2 = float(sig)/(float(sig)-1)
+def f(K) : return float(A)*(float(alpha)*vector(K)**float(power1) + (1-float(alpha))*float(L)**float(power1))**float(power2)
+plt.xlabel("$K$")
+plt.ylabel("$Y$")
+plt.plot(K,f(K))
+
+"e)"
+#repeat d) for different values of sigma, use cobb douglas function when sigma=1.
+sig = 0.5
+vector = np.vectorize(np.int_)
+K = np.linspace(0, 10, 11)
+power1 = (float(sig)-1)/1
+power2 = float(sig)/(float(sig)-1)
+def g(K) : return float(A)*(float(alpha)*vector(K)**float(power1) +(1-float(alpha))*float(L)**float(power1))**float(power2)
+plt.plot(K,g(K))
+sig = 1 #use cobb douglas function
+def h(K) : return float(A)*(vector(K)**float(alpha))*float(L)**(1-float(alpha))
+plt.plot(K,h(K))
+sig = 2
+vector = np.vectorize(np.int_)
+K = np.linspace(0,10,11)
+power1 = (float(sig)-1)/1
+power2 = float(sig)/(float(sig)-1)
+def i(K) : return float(A)*(float(alpha)*vector(K)**float(power1) + (1-float(alpha))*float(L)**float(power1))**float(power2)
+plt.plot(K,i(K))
+sig = 4
+vector = np.vectorize(np.int_)
+K = np.linspace(0,10,11)
+power1 = (float(sig)-1)/1
+power2 = float(sig)/(float(sig)-1)
+def j(K) : return float(A)*(float(alpha)*vector(K)**float(power1) + (1-float(alpha))*float(L)**float(power1))**float(power2)    
+plt.plot(K,j(K))
+
+"f)"
+#as sigma increase, the diagram change form concave to convex. The sigma is the constant elasticity of substitution between the two production factors K-capital and L-labour. The higher the sigma is, the more k can change into L. Thus the rise in k lead to faster rise in Y
